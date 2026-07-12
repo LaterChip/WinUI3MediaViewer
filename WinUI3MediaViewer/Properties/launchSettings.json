@@ -1,1 +1,8 @@
-
+{
+  "profiles": {
+    "WinUI3MediaViewer": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
