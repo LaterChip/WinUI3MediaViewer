@@ -41,4 +41,4 @@
 
 1. 克隆本仓库：
    ```bash
-   git clone https://github.com/YOUR_USERNAME/WinUI3MediaViewer.git
+   git clone https://github.com/LaterChip/WinUI3MediaViewer.git
