@@ -5,29 +5,32 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:   # 允许手动触发
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: WinUI3MediaViewer
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # 建议也升级 checkout 到 v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
 
     - name: Restore dependencies
-      run: dotnet restore WinUI3MediaViewer/WinUI3MediaViewer.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore
 
     - name: Build
-      run: dotnet build WinUI3MediaViewer/WinUI3MediaViewer.csproj --no-restore -c Release
+      run: dotnet build --no-restore -c Release
 
-    - name: Upload artifacts (optional)
-      if: success()
-      uses: actions/upload-artifact@v3
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4  # 关键修改：v3 -> v4
       with:
         name: WinUI3MediaViewer
         path: WinUI3MediaViewer/bin/Release/net6.0-windows10.0.19041.0/
