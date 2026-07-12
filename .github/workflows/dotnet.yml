@@ -16,12 +16,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4  # 建议也升级 checkout 到 v4
+    # 1. 更新 checkout action 到 v5
+    - uses: actions/checkout@v5
 
+    # 2. 更新 setup-dotnet action 到 v5，并指定 .NET 8.x SDK
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
+
+    # 3. 可选：如果需要 Windows SDK，可以保留或移除
+    # - name: Setup Windows SDK
+    #   run: choco install windows-sdk-10.0.19041.0 -y
+    #   shell: pwsh
 
     - name: Restore dependencies
       run: dotnet restore
@@ -29,8 +36,9 @@ jobs:
     - name: Build
       run: dotnet build --no-restore -c Release
 
+    # 4. 更新 upload-artifact action 到 v5
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v4  # 关键修改：v3 -> v4
+      uses: actions/upload-artifact@v5
       with:
         name: WinUI3MediaViewer
-        path: WinUI3MediaViewer/bin/Release/net6.0-windows10.0.19041.0/
+        path: WinUI3MediaViewer/bin/Release/net8.0-windows10.0.19041.0/
