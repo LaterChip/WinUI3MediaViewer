@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUI3MediaViewer.Core.Interfaces;
@@ -23,10 +24,9 @@ public sealed partial class MainWindow : Window
         ViewModel = new MainViewModel(fileDropService, thumbnailService);
         ViewModel.RequestOpenFile += (s, e) => OpenFilePicker();
 
-        // 绑定数据上下文
-        this.Content = new Grid(); // 实际上 XAML 已经设置了根元素，这里只是为了说明
-        // 但由于 XAML 定义，我们不需要再次设置 Content。
-        // 只需确保 DataContext 有效：
+        // 设置 DataContext（这样普通 Binding 与 x:Bind 都能正常工作）
+        this.DataContext = ViewModel;
+
         this.Closed += (s, e) => { /* 释放资源 */ };
     }
 
@@ -60,7 +60,8 @@ public sealed partial class MainWindow : Window
         picker.FileTypeFilter.Add(".mp4");
         picker.FileTypeFilter.Add(".mp3");
 
-        var hwnd = Win32Interop.GetWindowHandle(this);
+        // 获取窗口句柄，WinRT.Interop 提供 WindowNative.GetWindowHandle
+        var hwnd = WindowNative.GetWindowHandle(this);
         InitializeWithWindow.Initialize(picker, hwnd);
 
         var files = await picker.PickMultipleFilesAsync();
