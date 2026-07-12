@@ -1,14 +1,14 @@
 # WinUI3 Media Viewer
 
-[![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/WinUI3MediaViewer?style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/stargazers)
-[![Release](https://img.shields.io/github/v/release/YOUR_USERNAME/WinUI3MediaViewer?style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/YOUR_USERNAME/WinUI3MediaViewer/dotnet.yml?branch=main&style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/actions)
-[![Issues](https://img.shields.io/github/issues/YOUR_USERNAME/WinUI3MediaViewer?style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/YOUR_USERNAME/WinUI3MediaViewer?style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/pulls)
-[![Downloads](https://img.shields.io/github/downloads/YOUR_USERNAME/WinUI3MediaViewer/total?style=flat-square)](https://github.com/YOUR_USERNAME/WinUI3MediaViewer/releases)
+[![Stars](https://img.shields.io/github/stars/LaterChip/WinUI3MediaViewer?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/stargazers)
+[![Release](https://img.shields.io/github/v/release/LaterChip/WinUI3MediaViewer?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/LaterChip/WinUI3MediaViewer/dotnet.yml?branch=main&style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/actions)
+[![Issues](https://img.shields.io/github/issues/LaterChip/WinUI3MediaViewer?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/LaterChip/WinUI3MediaViewer?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/pulls)
+[![Downloads](https://img.shields.io/github/downloads/LaterChip/WinUI3MediaViewer/total?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/releases)
 
-[![动态](https://img.shields.io/badge/动态-Bilibili-00A2D8?style=flat-square&logo=bilibili&logoColor=white)](https://space.bilibili.com/YOUR_UID)
-[![TrendShift](https://img.shields.io/badge/TRENDSHIFT·C%23-%231_Repository_Of_The_Week-8A2BE2?style=flat-square)](https://trendshift.io/repositories/YOUR_USERNAME/WinUI3MediaViewer)
+[![动态](https://img.shields.io/badge/动态-Bilibili-00A2D8?style=flat-square&logo=bilibili&logoColor=white)](https://space.bilibili.com/3546952564214479)
+[![TrendShift](https://img.shields.io/badge/TRENDSHIFT·C%23-%231_Repository_Of_The_Week-8A2BE2?style=flat-square)](https://trendshift.io/repositories/LaterChip/WinUI3MediaViewer)
 [![GitHub Trending](https://img.shields.io/badge/GITHUB_TRENDING-%232_Repository_Of_The_Day-FF6B00?style=flat-square)](https://github.com/trending)
 
 ---
