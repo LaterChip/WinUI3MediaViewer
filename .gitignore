@@ -1,0 +1,46 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+*.pdb
+*.ilk
+*.meta
+*.obj
+*.pgc
+*.pgd
+*.ipdb
+*.iobj
+_ReSharper.Caches/
+*.csproj.user
+
+# Package
+*.nupkg
+*.snupkg
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+*.appxsym
+*.appxupload
+*.msi
+*.exe
+*.dll
+*.pdb
+
+# Publishing
+publish/
+*.pubxml.user
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Mac
+.DS_Store
