@@ -1,21 +1,33 @@
-name: .NET
+name: .NET Build
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:   # 允许手动触发
 
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore WinUI3MediaViewer/WinUI3MediaViewer.csproj --source https://api.nuget.org/v3/index.json
+
     - name: Build
-      run: dotnet build --no-restore -c Release
+      run: dotnet build WinUI3MediaViewer/WinUI3MediaViewer.csproj --no-restore -c Release
+
+    - name: Upload artifacts (optional)
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: WinUI3MediaViewer
+        path: WinUI3MediaViewer/bin/Release/net6.0-windows10.0.19041.0/
