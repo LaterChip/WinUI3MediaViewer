@@ -1,1 +1,94 @@
+<Window
+    x:Class="WinUI3MediaViewer.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3MediaViewer.Converters"
+    xmlns:vm="using:WinUI3MediaViewer.ViewModels"
+    Title="媒体查看器"
+    Width="1000"
+    Height="700"
+    AllowDrop="True"
+    DragOver="OnDragOver"
+    Drop="OnDrop">
 
+    <Window.Resources>
+        <local:MediaTypeToVisibilityConverter x:Key="MediaTypeToVisibilityConverter" />
+        <local:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:FileSizeToFriendlyStringConverter x:Key="FileSizeToFriendlyStringConverter" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧列表 -->
+        <ListView
+            Grid.Column="0"
+            x:Name="ThumbnailListView"
+            ItemsSource="{x:Bind ViewModel.MediaItems}"
+            SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}"
+            SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=TwoWay}"
+            AllowDrop="True"
+            DragOver="OnDragOver"
+            Drop="OnDrop">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:MediaFileItem">
+                    <Grid Margin="4" Height="64">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="50" Height="50" CornerRadius="4" Background="LightGray">
+                            <Image Source="{Binding Thumbnail, Converter={StaticResource StringToImageSourceConverter}}" Stretch="Uniform" MaxWidth="46" MaxHeight="46" />
+                        </Border>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" Margin="8,0,4,0" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Grid.Column="2" Text="{Binding FileSize, Converter={StaticResource FileSizeToFriendlyStringConverter}}" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="12" Opacity="0.6" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- 右侧预览 -->
+        <Grid Grid.Column="1" Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- 工具栏 -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+                <Button x:Name="ClearButton" Click="OnClearClick" Content="清空" />
+                <Button x:Name="OpenButton" Click="OnOpenClick" Content="打开文件" Margin="8,0,0,0" />
+                <TextBlock Text="{Binding SelectedItem.Name}" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="SemiBold" />
+            </StackPanel>
+
+            <!-- 预览区域 -->
+            <Grid Grid.Row="1" Background="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <!-- 图片预览 -->
+                <Image x:Name="ImageViewer"
+                       Source="{Binding SelectedItem.FilePath, Converter={StaticResource StringToImageSourceConverter}}"
+                       Stretch="Uniform"
+                       Visibility="{Binding SelectedItem.Type, Converter={StaticResource MediaTypeToVisibilityConverter}, ConverterParameter=Image}" />
+
+                <!-- 视频/音频预览 -->
+                <MediaPlayerElement x:Name="MediaPlayer"
+                                    Visibility="{Binding SelectedItem.Type, Converter={StaticResource MediaTypeToVisibilityConverter}, ConverterParameter=Video}"
+                                    AreTransportControlsEnabled="True"
+                                    AutoPlay="True" />
+                <!-- 音频也使用 MediaPlayerElement，但可隐藏视频部分 -->
+                <MediaPlayerElement x:Name="AudioPlayer"
+                                    Visibility="{Binding SelectedItem.Type, Converter={StaticResource MediaTypeToVisibilityConverter}, ConverterParameter=Audio}"
+                                    AreTransportControlsEnabled="True"
+                                    AutoPlay="True" />
+            </Grid>
+
+            <!-- 底部提示 -->
+            <TextBlock Grid.Row="2" Text="拖放文件或文件夹到此窗口" HorizontalAlignment="Center" Margin="0,8,0,0" Opacity="0.5" />
+        </Grid>
+    </Grid>
+</Window>
