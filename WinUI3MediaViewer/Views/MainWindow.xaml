@@ -46,7 +46,7 @@
                             <Image Source="{Binding Thumbnail, Converter={StaticResource StringToImageSourceConverter}}" Stretch="Uniform" MaxWidth="46" MaxHeight="46" />
                         </Border>
                         <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" Margin="8,0,4,0" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
-                        <TextBlock Grid.Column="2" Text="{Binding FileSize, Converter={StaticResource FileSizeToFriendlyStringConverter}}" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="12" Opacity="0.6" />
+                        <TextBlock Grid.Column="2" Text="{Binding FileSize, Converter={StaticResource FileSizeToFriendlyStringConverter}}" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="12" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -64,7 +64,7 @@
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
                 <Button x:Name="ClearButton" Click="OnClearClick" Content="清空" />
                 <Button x:Name="OpenButton" Click="OnOpenClick" Content="打开文件" Margin="8,0,0,0" />
-                <TextBlock Text="{Binding SelectedItem.Name}" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="SemiBold" />
+                <TextBlock Text="{x:Bind ViewModel.SelectedItem.Name, Mode=OneWay}" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="SemiBold" />
             </StackPanel>
 
             <!-- 预览区域 -->
