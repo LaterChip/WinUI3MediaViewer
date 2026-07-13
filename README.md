@@ -8,7 +8,7 @@
 [![Downloads](https://img.shields.io/github/downloads/LaterChip/WinUI3MediaViewer/total?style=flat-square)](https://github.com/LaterChip/WinUI3MediaViewer/releases)
 
 [![动态](https://img.shields.io/badge/动态-Bilibili-00A2D8?style=flat-square&logo=bilibili&logoColor=white)](https://space.bilibili.com/3546952564214479)
-[![TrendShift](https://img.shields.io/badge/TRENDSHIFT·C%23-%231_Repository_Of_The_Week-8A2BE2?style=flat-square)](https://trendshift.io/repositories/LaterChip/WinUI3MediaViewer)
+[![TrendShift](https://img.shields.io/badge/TRENDSHIFT·C%23-%231_Repository_Of_The_Week-8A2BE2?style=flat-square)](https://trendshift.io/repositories/80945)
 [![GitHub Trending](https://img.shields.io/badge/GITHUB_TRENDING-%232_Repository_Of_The_Day-FF6B00?style=flat-square)](https://github.com/trending)
 
 ---
